@@ -135,10 +135,10 @@ import 'dart:convert';
 import 'package:plumber_project/pages/splash.dart';
 import 'package:plumber_project/pages/theme.dart';
 import 'package:plumber_project/pages/login.dart';
-import 'package:plumber_project/pages/plumber_dashboard.dart';
+import 'package:plumber_project/pages/plumber_dashboard.dart' as dash;
 import 'package:plumber_project/pages/electrition_dashboard.dart';
 import 'package:plumber_project/pages/dashboard.dart';
-import 'package:plumber_project/pages/plumber_profile.dart';
+import 'package:plumber_project/pages/plumber_profile.dart' as profile;
 import 'package:plumber_project/pages/electrition_profile.dart';
 import 'package:plumber_project/pages/user_profile.dart';
 
@@ -156,7 +156,8 @@ void main() async {
   if (rememberMe && token != null && role != null && userId != null) {
     bool hasProfile = await checkUserProfile(userId, token);
     if (role == 'plumber') {
-      initialScreen = hasProfile ? PlumberDashboard() : PlumberProfilePage();
+      initialScreen =
+          hasProfile ? dash.PlumberDashboard() : profile.PlumberProfilePage();
     } else if (role == 'electrician') {
       initialScreen =
           hasProfile ? ElectricianDashboard() : ElectricianProfilePage();
@@ -210,7 +211,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Plumber Project',
+      title: 'Skill-Link',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
